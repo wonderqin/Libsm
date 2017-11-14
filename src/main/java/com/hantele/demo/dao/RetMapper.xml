@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hantele.demo.dao.impl.RetMapper">
+  <resultMap id="BaseResultMap" type="com.hantele.demo.entity.Ret">
+    <constructor>
+      <idArg column="ret_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="state" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="outretdate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actretdate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="overdue" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="outbil" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="actbil" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="bookid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    ret_ID, state, outretdate, actretdate, overdue, outbil, actbil, bookid, userid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ret
+    where ret_ID = #{retId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ret
+    where ret_ID = #{retId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hantele.demo.entity.Ret">
+    insert into ret (ret_ID, state, outretdate, 
+      actretdate, overdue, outbil, 
+      actbil, bookid, userid
+      )
+    values (#{retId,jdbcType=INTEGER}, #{state,jdbcType=CHAR}, #{outretdate,jdbcType=TIMESTAMP}, 
+      #{actretdate,jdbcType=TIMESTAMP}, #{overdue,jdbcType=CHAR}, #{outbil,jdbcType=DOUBLE}, 
+      #{actbil,jdbcType=DOUBLE}, #{bookid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hantele.demo.entity.Ret">
+    insert into ret
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="retId != null">
+        ret_ID,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="outretdate != null">
+        outretdate,
+      </if>
+      <if test="actretdate != null">
+        actretdate,
+      </if>
+      <if test="overdue != null">
+        overdue,
+      </if>
+      <if test="outbil != null">
+        outbil,
+      </if>
+      <if test="actbil != null">
+        actbil,
+      </if>
+      <if test="bookid != null">
+        bookid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="retId != null">
+        #{retId,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="outretdate != null">
+        #{outretdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actretdate != null">
+        #{actretdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdue != null">
+        #{overdue,jdbcType=CHAR},
+      </if>
+      <if test="outbil != null">
+        #{outbil,jdbcType=DOUBLE},
+      </if>
+      <if test="actbil != null">
+        #{actbil,jdbcType=DOUBLE},
+      </if>
+      <if test="bookid != null">
+        #{bookid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hantele.demo.entity.Ret">
+    update ret
+    <set>
+      <if test="state != null">
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="outretdate != null">
+        outretdate = #{outretdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actretdate != null">
+        actretdate = #{actretdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overdue != null">
+        overdue = #{overdue,jdbcType=CHAR},
+      </if>
+      <if test="outbil != null">
+        outbil = #{outbil,jdbcType=DOUBLE},
+      </if>
+      <if test="actbil != null">
+        actbil = #{actbil,jdbcType=DOUBLE},
+      </if>
+      <if test="bookid != null">
+        bookid = #{bookid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ret_ID = #{retId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hantele.demo.entity.Ret">
+    update ret
+    set state = #{state,jdbcType=CHAR},
+      outretdate = #{outretdate,jdbcType=TIMESTAMP},
+      actretdate = #{actretdate,jdbcType=TIMESTAMP},
+      overdue = #{overdue,jdbcType=CHAR},
+      outbil = #{outbil,jdbcType=DOUBLE},
+      actbil = #{actbil,jdbcType=DOUBLE},
+      bookid = #{bookid,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=INTEGER}
+    where ret_ID = #{retId,jdbcType=INTEGER}
+  </update>
+</mapper>

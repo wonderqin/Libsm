@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hantele.demo.dao.impl.FineMapper">
+  <resultMap id="BaseResultMap" type="com.hantele.demo.entity.Fine">
+    <constructor>
+      <idArg column="fineid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="finegole" javaType="java.lang.Double" jdbcType="DOUBLE" />
+      <arg column="borrdate" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="deadline" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="actretday" javaType="java.util.Date" jdbcType="TIMESTAMP" />
+      <arg column="state" javaType="java.lang.String" jdbcType="CHAR" />
+      <arg column="userid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+      <arg column="bookid" javaType="java.lang.Integer" jdbcType="INTEGER" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List">
+    fineid, finegole, borrdate, deadline, actretday, state, userid, bookid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from fine
+    where fineid = #{fineid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from fine
+    where fineid = #{fineid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.hantele.demo.entity.Fine">
+    insert into fine (fineid, finegole, borrdate, 
+      deadline, actretday, state, 
+      userid, bookid)
+    values (#{fineid,jdbcType=INTEGER}, #{finegole,jdbcType=DOUBLE}, #{borrdate,jdbcType=TIMESTAMP}, 
+      #{deadline,jdbcType=TIMESTAMP}, #{actretday,jdbcType=TIMESTAMP}, #{state,jdbcType=CHAR}, 
+      #{userid,jdbcType=INTEGER}, #{bookid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hantele.demo.entity.Fine">
+    insert into fine
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fineid != null">
+        fineid,
+      </if>
+      <if test="finegole != null">
+        finegole,
+      </if>
+      <if test="borrdate != null">
+        borrdate,
+      </if>
+      <if test="deadline != null">
+        deadline,
+      </if>
+      <if test="actretday != null">
+        actretday,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="bookid != null">
+        bookid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fineid != null">
+        #{fineid,jdbcType=INTEGER},
+      </if>
+      <if test="finegole != null">
+        #{finegole,jdbcType=DOUBLE},
+      </if>
+      <if test="borrdate != null">
+        #{borrdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null">
+        #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actretday != null">
+        #{actretday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="bookid != null">
+        #{bookid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hantele.demo.entity.Fine">
+    update fine
+    <set>
+      <if test="finegole != null">
+        finegole = #{finegole,jdbcType=DOUBLE},
+      </if>
+      <if test="borrdate != null">
+        borrdate = #{borrdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deadline != null">
+        deadline = #{deadline,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actretday != null">
+        actretday = #{actretday,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="bookid != null">
+        bookid = #{bookid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where fineid = #{fineid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hantele.demo.entity.Fine">
+    update fine
+    set finegole = #{finegole,jdbcType=DOUBLE},
+      borrdate = #{borrdate,jdbcType=TIMESTAMP},
+      deadline = #{deadline,jdbcType=TIMESTAMP},
+      actretday = #{actretday,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=CHAR},
+      userid = #{userid,jdbcType=INTEGER},
+      bookid = #{bookid,jdbcType=INTEGER}
+    where fineid = #{fineid,jdbcType=INTEGER}
+  </update>
+</mapper>
