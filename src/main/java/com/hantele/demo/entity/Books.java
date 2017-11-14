@@ -119,4 +119,20 @@ public class Books {
     public void setResnum(String resnum) {
         this.resnum = resnum == null ? null : resnum.trim();
     }
+
+    @Override
+    public String toString() {
+        return "Books{" +
+                "bookId=" + bookId +
+                ", booklistId=" + booklistId +
+                ", bookname='" + bookname + '\'' +
+                ", author='" + author + '\'' +
+                ", press='" + press + '\'' +
+                ", pubtime=" + pubtime +
+                ", price=" + price +
+                ", state='" + state + '\'' +
+                ", ranges='" + ranges + '\'' +
+                ", resnum='" + resnum + '\'' +
+                '}';
+    }
 }
