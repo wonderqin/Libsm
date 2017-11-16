@@ -1,6 +1,7 @@
-package com.hantele.demo.dao.impl;
+package com.hantele.demo.dao;
 
 import com.hantele.demo.entity.Bookcount;
+import org.apache.ibatis.annotations.Param;
 
 public interface BookcountMapper {
     int deleteByPrimaryKey(Integer cid);
@@ -14,4 +15,8 @@ public interface BookcountMapper {
     int updateByPrimaryKeySelective(Bookcount record);
 
     int updateByPrimaryKey(Bookcount record);
+
+    int IncreaseBookCount(@Param("bookName") String bookName, @Param("number") int number);
+
+    int DecreaseBookCount(@Param("bookName") String bookName, @Param("number") int number);
 }

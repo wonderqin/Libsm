@@ -3,17 +3,17 @@ package com.hantele.demo.entity;
 import java.util.Date;
 
 public class Books {
-    private Integer bookId;
+    private Integer book_ID;
 
-    private Integer booklistId;
+    private Integer bookList_ID;
 
-    private String bookname;
+    private String bookName;
 
     private String author;
 
     private String press;
 
-    private Date pubtime;
+    private Date pubTime;
 
     private Double price;
 
@@ -23,13 +23,13 @@ public class Books {
 
     private String resnum;
 
-    public Books(Integer bookId, Integer booklistId, String bookname, String author, String press, Date pubtime, Double price, String state, String ranges, String resnum) {
-        this.bookId = bookId;
-        this.booklistId = booklistId;
-        this.bookname = bookname;
+    public Books(Integer book_ID, Integer bookList_ID, String bookName, String author, String press, Date pubTime, Double price, String state, String ranges, String resnum) {
+        this.book_ID = book_ID;
+        this.bookList_ID = bookList_ID;
+        this.bookName = bookName;
         this.author = author;
         this.press = press;
-        this.pubtime = pubtime;
+        this.pubTime = pubTime;
         this.price = price;
         this.state = state;
         this.ranges = ranges;
@@ -40,28 +40,28 @@ public class Books {
         super();
     }
 
-    public Integer getBookId() {
-        return bookId;
+    public Integer getbook_ID() {
+        return book_ID;
     }
 
-    public void setBookId(Integer bookId) {
-        this.bookId = bookId;
+    public void setbook_ID(Integer book_ID) {
+        this.book_ID = book_ID;
     }
 
-    public Integer getBooklistId() {
-        return booklistId;
+    public Integer getbookList_ID() {
+        return bookList_ID;
     }
 
-    public void setBooklistId(Integer booklistId) {
-        this.booklistId = booklistId;
+    public void setbookList_ID(Integer bookList_ID) {
+        this.bookList_ID = bookList_ID;
     }
 
-    public String getBookname() {
-        return bookname;
+    public String getbookName() {
+        return bookName;
     }
 
-    public void setBookname(String bookname) {
-        this.bookname = bookname == null ? null : bookname.trim();
+    public void setbookName(String bookName) {
+        this.bookName = bookName == null ? null : bookName.trim();
     }
 
     public String getAuthor() {
@@ -80,12 +80,12 @@ public class Books {
         this.press = press == null ? null : press.trim();
     }
 
-    public Date getPubtime() {
-        return pubtime;
+    public Date getpubTime() {
+        return pubTime;
     }
 
-    public void setPubtime(Date pubtime) {
-        this.pubtime = pubtime;
+    public void setpubTime(Date pubTime) {
+        this.pubTime = pubTime;
     }
 
     public Double getPrice() {
@@ -123,12 +123,12 @@ public class Books {
     @Override
     public String toString() {
         return "Books{" +
-                "bookId=" + bookId +
-                ", booklistId=" + booklistId +
-                ", bookname='" + bookname + '\'' +
+                "book_ID=" + book_ID +
+                ", bookList_ID=" + bookList_ID +
+                ", bookName='" + bookName + '\'' +
                 ", author='" + author + '\'' +
                 ", press='" + press + '\'' +
-                ", pubtime=" + pubtime +
+                ", pubTime=" + pubTime +
                 ", price=" + price +
                 ", state='" + state + '\'' +
                 ", ranges='" + ranges + '\'' +

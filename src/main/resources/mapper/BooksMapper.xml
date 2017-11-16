@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hantele.demo.dao.impl.BooksMapper">
+<mapper namespace="com.hantele.demo.dao.BooksMapper">
   <resultMap id="BaseResultMap" type="com.hantele.demo.entity.Books">
     <constructor>
       <idArg column="book_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -151,4 +151,31 @@
       resnum = #{resnum,jdbcType=VARCHAR}
     where book_ID = #{bookId,jdbcType=INTEGER}
   </update>
+    <select id="selectBookByCondition" resultType="com.hantele.demo.entity.Books">
+        SELECT * FROM books where bookName LIKE CONCAT('%','${condition}','%' )
+        UNION
+        SELECT * FROM books where author LIKE CONCAT('%','${condition}','%' )
+        UNION
+        SELECT * FROM books where press LIKE CONCAT('%','${condition}','%' )
+    </select>
+
+    <insert id="insertBooks" parameterType="com.hantele.demo.entity.Books">
+        INSERT INTO books
+        (book_ID, bookList_ID, bookName,
+        author, press, pubTime,
+        price, state, ranges, resnum
+        )
+        values (#{book_ID,jdbcType=INTEGER}, #{bookList_ID,jdbcType=INTEGER}, #{bookName,jdbcType=VARCHAR},
+        #{author,jdbcType=VARCHAR}, #{press,jdbcType=VARCHAR}, #{pubTime,jdbcType=DATE},
+        #{price,jdbcType=DOUBLE}, #{state,jdbcType=CHAR}, #{ranges,jdbcType=CHAR}, #{resnum,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <select id="selectBookcountByBookName" resultType="com.hantele.demo.entity.Bookcount">
+        SELECT * FROM bookcount WHERE bookname=#{bookName}
+    </select>
+
+    <delete id="deleteBook" parameterType="int">
+        DELETE from books WHERE book_ID = #{id}
+    </delete>
 </mapper>
