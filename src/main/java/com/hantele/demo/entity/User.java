@@ -1,10 +1,17 @@
 package com.hantele.demo.entity;
 
+import org.hibernate.validator.constraints.Length;
+import javax.validation.constraints.NotNull;
+
 public class User {
     private Integer userId;
 
+    @NotNull(message = "用户名不能为空！")
+    @Length(min = 3,message = "用户名长度最低为3")
     private String username;
 
+    @NotNull(message = "密码不能为空！")
+    @Length(max = 16,message = "密码长度最长为16位")
     private String pwd;
 
     private String identity;
