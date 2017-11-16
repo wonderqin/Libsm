@@ -1,4 +1,4 @@
-package com.hantele.demo.dao.impl;
+package com.hantele.demo.dao;
 
 import com.hantele.demo.entity.Bookind;
 

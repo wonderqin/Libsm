@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hantele.demo.dao.impl.BookindMapper">
+<mapper namespace="com.hantele.demo.dao.BookindMapper">
   <resultMap id="BaseResultMap" type="com.hantele.demo.entity.Bookind">
     <constructor>
       <idArg column="bookList_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hantele.demo.dao.impl.BorrowMapper">
+<mapper namespace="com.hantele.demo.dao.BorrowMapper">
   <resultMap id="BaseResultMap" type="com.hantele.demo.entity.Borrow">
     <constructor>
       <idArg column="borrow_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />

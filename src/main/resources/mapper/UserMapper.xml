@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hantele.demo.dao.impl.UserMapper">
+<mapper namespace="com.hantele.demo.dao.UserMapper">
   <resultMap id="BaseResultMap" type="com.hantele.demo.entity.User">
     <constructor>
       <idArg column="user_ID" javaType="java.lang.Integer" jdbcType="INTEGER" />
@@ -25,10 +25,10 @@
     where user_ID = #{userId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.hantele.demo.entity.User">
-    insert into user (user_ID, userName, pwd, 
+    insert into user (user_ID, userName, pwd,
       identity, tel, addr
       )
-    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR}, 
+    values (#{userId,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{pwd,jdbcType=VARCHAR},
       #{identity,jdbcType=VARCHAR}, #{tel,jdbcType=VARCHAR}, #{addr,jdbcType=VARCHAR}
       )
   </insert>
@@ -105,4 +105,20 @@
       addr = #{addr,jdbcType=VARCHAR}
     where user_ID = #{userId,jdbcType=INTEGER}
   </update>
+
+  <!--mydefined-->
+  <select id="findByUsernameAndPassword" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where userName= #{username,jdbcType=VARCHAR} AND pwd= #{pwd,jdbcType=VARCHAR}
+  </select>
+
+    <update id="authorization">
+        UPDATE user
+        SET
+        identity = #{identity}
+        WHERE
+        user_ID = #{userId}
+    </update>
 </mapper>
