@@ -19,4 +19,6 @@ public interface UserMapper {
     User findByUsernameAndPassword(@Param("username") String username, @Param("pwd") String pwd);
 
     int authorization(@Param("userId") Integer userId,@Param("identity") String identity);
+
+    User listUserInfoByName(@Param("username") String username);
 }

@@ -54,6 +54,8 @@ public class LoginCtroller {
     public String userLogin(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+        //为了在查询时获取到当前登录用户，在这里把登录用户存放在session中
+        request.getSession().setAttribute("username",username);
         User users = userMapper.findByUsernameAndPassword(username,password);
         if(users != null){
             return "home";

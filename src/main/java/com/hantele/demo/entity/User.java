@@ -80,4 +80,16 @@ public class User {
     public void setAddr(String addr) {
         this.addr = addr == null ? null : addr.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", pwd='" + pwd + '\'' +
+                ", identity='" + identity + '\'' +
+                ", tel='" + tel + '\'' +
+                ", addr='" + addr + '\'' +
+                '}';
+    }
 }
